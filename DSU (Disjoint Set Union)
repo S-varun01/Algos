@@ -1,0 +1,24 @@
+vll parent(100001);
+vll rank1(100001);
+
+ll findPar(ll node){
+    if(node == parent[node]) return node;
+    else return parent[node] = findPar(parent[node]);
+}
+
+void union1(ll u, ll v) {
+    u = findPar(u);
+    v = findPar(v);
+        if(rank1[u] > rank1[v]){
+            parent[v] = u;
+        }
+        else if(rank1[u] < rank1[v]){
+            parent[u] = v;
+            
+        }
+        else{
+            parent[u]  = v;
+            rank1[v]++;
+        }
+    return;
+}
